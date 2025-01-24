@@ -22,6 +22,7 @@ export default function UserProgressContextProvider({ children }) {
 
     function showCheckout() {
         setUserProgress('checkout');
+
     }
 
     function hideCheckout() {

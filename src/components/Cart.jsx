@@ -12,7 +12,11 @@ export default function Cart() {
     const cartTotal = cartCtx.items.reduce((total, item) => total + item.price * item.quantity, 0);
 
     return (
-        <Modal className='cart' open={UPCtx.progress === 'cart'}>
+        <Modal
+            className='cart'
+            open={UPCtx.progress === 'cart'}
+            onClose={UPCtx.progress === 'cart' ? () => UPCtx.hideCart() : null}
+        >
             <h2>Your Cart</h2>
             <ul>
                 {cartCtx.items.map(item => (
@@ -26,8 +30,8 @@ export default function Cart() {
             </ul>
             <p className='cart-total'>{currencyFormatter.format(cartTotal)}</p>
             <p className='modal-actions'>
-                <Button textOnly onClick={UPCtx.hideCart}>Close</Button>
-                {cartCtx.items.length && <Button onClick={UPCtx.hideCart}>Go to checkout</Button>}
+                <Button textOnly onClick={() => UPCtx.hideCart()}>Close</Button>
+                {cartCtx.items.length && <Button onClick={() => UPCtx.showCheckout()}>Go to checkout</Button>}
             </p>
         </Modal>
     )
