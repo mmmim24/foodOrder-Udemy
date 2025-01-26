@@ -14,10 +14,30 @@ export default function CheckOut() {
         0
     );
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const userData = Object.fromEntries(fd.entries());
+
+        fetch('http://localhost:3000/orders',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    order: {
+                        items: cartCtx.items,
+                        customer: userData,
+                    }
+                })
+            });
+    }
+
     return (
         <React.Fragment>
             <Modal open={UPCtx.progress === 'checkout'} onClose={() => UPCtx.hideCart()}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h2>Checkout</h2>
                     <p>Total Amount: {currencyFormatter.format(cartTotal)} </p>
                     <Input label="Full Name" type="text" id="full-name" />
@@ -29,7 +49,7 @@ export default function CheckOut() {
                     </div>
                     <p className='modal-actions'>
                         <Button type="button" onClick={() => UPCtx.hideCheckout()} textOnly >Close</Button>
-                        <Button onClick >Submit Order</Button>
+                        <Button>Submit Order</Button>
                     </p>
                 </form>
             </Modal>
