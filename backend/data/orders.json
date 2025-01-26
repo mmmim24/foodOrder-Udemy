@@ -1,1 +1,42 @@
-[]
+[
+    {
+        "items": [
+            {
+                "id": "m2",
+                "name": "Margherita Pizza",
+                "price": "12.99",
+                "description": "A classic pizza with fresh mozzarella, tomatoes, and basil on a thin and crispy crust.",
+                "image": "images/margherita-pizza.jpg",
+                "quantity": 1
+            }
+        ],
+        "customer": {
+            "full-name": "Mustaq Mujahid Mim",
+            "email": "mustaqmujahidmim@gmail.com",
+            "street": "Elahi 8/B",
+            "postal-code": "3114",
+            "city": "Sylhet"
+        },
+        "id": "36.80141390547709"
+    },
+    {
+        "items": [
+            {
+                "id": "m6",
+                "name": "Grilled Chicken Sandwich",
+                "price": "10.99",
+                "description": "Tender grilled chicken breast with avocado, bacon, lettuce, and honey mustard on a toasted bun.",
+                "image": "images/grilled-chicken-sandwich.jpg",
+                "quantity": 1
+            }
+        ],
+        "customer": {
+            "full-name": "Xavier Xander",
+            "email": "xavier@yahoo.com",
+            "street": "221/B Baker street",
+            "postal-code": "1023",
+            "city": "London"
+        },
+        "id": "118.64220650324798"
+    }
+]

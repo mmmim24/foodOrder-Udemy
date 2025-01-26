@@ -13,10 +13,15 @@ export default function useHttp(url, config, initData) {
     const [error, setError] = React.useState();
     const [isLoading, setIsLoading] = React.useState(false);
     const [data, setData] = React.useState(initData);
-    const sendRequest = React.useCallback(async function sendRequest() {
+
+    function clearData() {
+        setData(initData);
+    }
+
+    const sendRequest = React.useCallback(async function sendRequest(data) {
         setIsLoading(true);
         try {
-            const resData = await sendHttpRequest(url, config);
+            const resData = await sendHttpRequest(url, { ...config, body: data });
             setData(resData);
         } catch (error) {
             setError(error.message || 'Something went wrong!');
@@ -34,6 +39,7 @@ export default function useHttp(url, config, initData) {
         data,
         isLoading,
         error,
-        sendRequest
+        sendRequest,
+        clearData
     }
 }
